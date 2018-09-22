@@ -6,8 +6,12 @@ describe('match', function() {
     expect(match('some text', 'te')).to.deep.equal([[5, 7]]);
   });
 
-  it('should not highlight at the middle of a word', function() {
+  it('should not highlight at the middle of a word if third parameter is not passed or is set to false value', function() {
     expect(match('some text', 'e')).to.deep.equal([]);
+  });
+
+  it('should highlight at the middle of a word if passed third parameter as true', function() {
+    expect(match('some text', 'o', true)).to.deep.equal([[1, 2]]);
   });
 
   it('should highlight only the first match by default', function() {
@@ -24,10 +28,6 @@ describe('match', function() {
 
   it('should remove diacritics when highlighting', function() {
     expect(match('Déjà vu', 'deja')).to.deep.equal([[0, 4]]);
-  });
-
-  it('should highlight diacritics', function() {
-    expect(match('Déjà vu', 'déjà')).to.deep.equal([[0, 4]]);
   });
 
   it('should sort the matches', function() {
