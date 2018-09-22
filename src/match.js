@@ -12,7 +12,7 @@ function escapeRegexCharacters(str) {
   return str.replace(specialCharsRegex, '\\$&');
 }
 
-module.exports = function match(text, query, anyMatch) {
+module.exports = function match(text, query, anyMatch=true) {
   text = removeDiacritics(text);
 
   return (
